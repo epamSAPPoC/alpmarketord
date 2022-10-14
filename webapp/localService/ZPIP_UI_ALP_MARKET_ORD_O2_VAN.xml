@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="../../../sap/zpip_ui_alp_market_ord_o2/$metadata">
+        <edmx:Include Namespace="ZPIP_UI_ALP_MARKET_ORD_O2" Alias="SAP"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="zpip_ui_alp_market_ord_o2_van.v1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zpip_ui_alp_market_ord.ALPMarketOrderType/ProdUuid">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zpip_ui_alp_market_ord.ALPMarketOrderType/MrktUuid">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zpip_ui_alp_market_ord.ALPMarketOrderType/OrderUuid">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zpip_ui_alp_market_ord.ALPMarketOrderType/ID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zpip_ui_alp_market_ord.ALPMarketOrderType">
+                <Annotation Term="UI.Chart" Qualifier="ChartMainChart">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/BarStacked"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>CountryName</PropertyPath>
+                                <PropertyPath>ProductName</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="ProductName"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="CountryName"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>GrossIncom</PropertyPath>
+                                <PropertyPath>Netamount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="GrossIncom"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="Netamount"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="ChartFilterProdByOrdQuantity">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>ProductName</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="ProductName"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>ProductCount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="ProductCount"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="ChartFilterCntrByGrossIncom">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Line"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>CountryName</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="CountryName"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>GrossIncom</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="GrossIncom"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="ChartGrossAmountByCountry">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>CountryName</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="CountryName"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>Grossamount</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="Grossamount"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="ChartGrossIncomeByCountry">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>CountryName</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="CountryName"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>GrossIncom</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="GrossIncom"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="dpGrossIncom">
+                    <Record>
+                        <PropertyValue Property="Value" Path="GrossIncom"/>
+                        <PropertyValue Property="Title" String="Gross Incom"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="2"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="7500000"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="8000000"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="TrendCalculation">
+                            <Record>
+                                <PropertyValue Property="ReferenceValue" Path="KPITargGrossIncome"/>
+                                <PropertyValue Property="UpDifference" Decimal="0"/>
+                                <PropertyValue Property="DownDifference" Decimal="0"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="GrossIncomAvg">
+                    <Record>
+                        <PropertyValue Property="Value" Path="GrossIncomAvg"/>
+                        <PropertyValue Property="Title" String="Average Gross Income"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record>
+                                <PropertyValue Property="ScaleFactor" Decimal="1000000"/>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="2"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="500000"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="550000"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="GrossIncomMax">
+                    <Record>
+                        <PropertyValue Property="Value" Path="GrossIncomMax"/>
+                        <PropertyValue Property="Title" String="Maximum"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record>
+                                <PropertyValue Property="ScaleFactor" Decimal="1000000"/>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="2"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="5000000"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="6000000"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="GrossIncomMin">
+                    <Record>
+                        <PropertyValue Property="Value" Path="GrossIncomMin"/>
+                        <PropertyValue Property="Title" String="Minimum"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record>
+                                <PropertyValue Property="ScaleFactor" Decimal="1000000"/>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="2"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="150000"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="200000"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Grossamount">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Grossamount"/>
+                        <PropertyValue Property="Title" String="Gross Amount"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="2"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="14000000"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="15000000"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="TrendCalculation">
+                            <Record>
+                                <PropertyValue Property="ReferenceValue" Path="KPITargGrossAmount"/>
+                                <PropertyValue Property="UpDifference" Decimal="0"/>
+                                <PropertyValue Property="DownDifference" Decimal="0"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Orderid">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Orderid"/>
+                        <PropertyValue Property="Title" String="Order ID"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="dpProductCount">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ProductCount"/>
+                        <PropertyValue Property="Title" String="Orders Quantity"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="2"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record>
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="3"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="5"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="Product">
+                    <Record>
+                        <PropertyValue Property="Value" Path="ProductName"/>
+                        <PropertyValue Property="Title" String="Product"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="General Information"/>
+                            <PropertyValue Property="ID" String="GeneralInformation"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="General Information"/>
+                                        <PropertyValue Property="ID" String="BasicData"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#BasicData"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Finance Information"/>
+                            <PropertyValue Property="ID" String="FinanceInformation"/>
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Finance Information"/>
+                                        <PropertyValue Property="ID" String="FinInfo"/>
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#FinInfo"/>
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderOrderid"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Orderid"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="HeaderProduct"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Product"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="BasicData">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Orderid"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="ProductName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="CountryName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="PhaseName"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="DeliveryDate"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="FinInfo">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Quantity"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Netamount"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Grossamount"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="GrossIncom"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Orderid"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ProductName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CountryName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PhaseName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DeliveryDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Quantity"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Netamount"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Grossamount"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="GrossIncom"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CountryName2"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem" Qualifier="LineMainChart">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ProductName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CountryName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Orderid"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PhaseName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="DeliveryDate"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Quantity"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Netamount"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Grossamount"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="GrossIncom"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="GrossIncomMin"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="GrossIncomAvg"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="GrossIncomMax"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="MainChart">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Orderid"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="GroupBy">
+                            <Collection>
+                                <PropertyPath>CountryName</PropertyPath>
+                                <PropertyPath>ProductName</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.LineItem#LineMainChart</AnnotationPath>
+                                <AnnotationPath>@UI.Chart#ChartMainChart</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="FilterProdByOrdQuantity">
+                    <Record>
+                        <PropertyValue Property="Text" String="Product by Gross Income Percentage"/>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.DataPoint#dpProductCount</AnnotationPath>
+                                <AnnotationPath>@UI.Chart#ChartFilterProdByOrdQuantity</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="FilterCntrByGrossIncom">
+                    <Record>
+                        <PropertyValue Property="Text" String="Market by Gross Income"/>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.DataPoint#dpGrossIncom</AnnotationPath>
+                                <AnnotationPath>@UI.Chart#ChartFilterCntrByGrossIncom</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="KPIGrossAmountByCountry">
+                    <Record>
+                        <PropertyValue Property="Text" String="Gross Amount By Countries"/>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.DataPoint#Grossamount</AnnotationPath>
+                                <AnnotationPath>@UI.Chart#ChartGrossAmountByCountry</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="KPIGrossIncomeByCountry">
+                    <Record>
+                        <PropertyValue Property="Text" String="Total Gross Income by Countries"/>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.DataPoint#dpGrossIncom</AnnotationPath>
+                                <AnnotationPath>@UI.Chart#ChartGrossIncomeByCountry</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="KPIGrossIncomeByCountryMin">
+                    <Record>
+                        <PropertyValue Property="Text" String="Minimum Gross Income by Countries"/>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.DataPoint#GrossIncomMin</AnnotationPath>
+                                <AnnotationPath>@UI.Chart#ChartGrossIncomeByCountry</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="KPIGrossIncomeByCountryMax">
+                    <Record>
+                        <PropertyValue Property="Text" String="Maximum Gross Income by Countries"/>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.DataPoint#GrossIncomMax</AnnotationPath>
+                                <AnnotationPath>@UI.Chart#ChartGrossIncomeByCountry</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="KPIGrossIncomeByCountryAvg">
+                    <Record>
+                        <PropertyValue Property="Text" String="Average Gross Income by Countries"/>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.DataPoint#GrossIncomAvg</AnnotationPath>
+                                <AnnotationPath>@UI.Chart#ChartGrossIncomeByCountry</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>ProductName</PropertyPath>
+                        <PropertyPath>CountryName</PropertyPath>
+                        <PropertyPath>DeliveryDate</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionPresentationVariant" Qualifier="MainChart">
+                    <Record>
+                        <PropertyValue Property="Text" String=""/>
+                        <PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#MainChart"/>
+                        <PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#MainChart"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionPresentationVariant" Qualifier="FilterProdByOrdQuantity">
+                    <Record>
+                        <PropertyValue Property="Text" String=""/>
+                        <PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#FilterProdByOrdQuantity"/>
+                        <PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#FilterProdByOrdQuantity"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionPresentationVariant" Qualifier="FilterCntrByGrossIncom">
+                    <Record>
+                        <PropertyValue Property="Text" String=""/>
+                        <PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#FilterCntrByGrossIncom"/>
+                        <PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#FilterCntrByGrossIncom"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionPresentationVariant" Qualifier="KPIGrossAmountByCountry">
+                    <Record>
+                        <PropertyValue Property="Text" String=""/>
+                        <PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#KPIGrossAmountByCountry"/>
+                        <PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#KPIGrossAmountByCountry"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionPresentationVariant" Qualifier="KPIGrossIncomeByCountry">
+                    <Record>
+                        <PropertyValue Property="Text" String=""/>
+                        <PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#KPIGrossIncomeByCountry"/>
+                        <PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#KPIGrossIncomeByCountry"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionPresentationVariant" Qualifier="KPIGrossIncomeByCountryMin">
+                    <Record>
+                        <PropertyValue Property="Text" String=""/>
+                        <PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#KPIGrossIncomeByCountryMin"/>
+                        <PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#KPIGrossIncomeByCountryMin"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionPresentationVariant" Qualifier="KPIGrossIncomeByCountryMax">
+                    <Record>
+                        <PropertyValue Property="Text" String=""/>
+                        <PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#KPIGrossIncomeByCountryMax"/>
+                        <PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#KPIGrossIncomeByCountryMax"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionPresentationVariant" Qualifier="KPIGrossIncomeByCountryAvg">
+                    <Record>
+                        <PropertyValue Property="Text" String=""/>
+                        <PropertyValue Property="SelectionVariant" Path="@UI.SelectionVariant#KPIGrossIncomeByCountryAvg"/>
+                        <PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant#KPIGrossIncomeByCountryAvg"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="MainChart">
+                    <Record>
+                        <PropertyValue Property="Text" String="Main Chart"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="FilterProdByOrdQuantity">
+                    <Record>
+                        <PropertyValue Property="Text" String="Product by Gross Income Percentage"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="FilterCntrByGrossIncom">
+                    <Record>
+                        <PropertyValue Property="Text" String="Market by Gross Income"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="KPIGrossAmountByCountry">
+                    <Record>
+                        <PropertyValue Property="Text" String="Gross Amount By Countries"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="KPIGrossIncomeByCountry">
+                    <Record>
+                        <PropertyValue Property="Text" String="Total Gross Income by Countries"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="KPIGrossIncomeByCountryMin">
+                    <Record>
+                        <PropertyValue Property="Text" String="Minimum Gross Income by Countries"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="KPIGrossIncomeByCountryMax">
+                    <Record>
+                        <PropertyValue Property="Text" String="Maximum Gross Income by Countries"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="KPIGrossIncomeByCountryAvg">
+                    <Record>
+                        <PropertyValue Property="Text" String="Average Gross Income by Countries"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpip_ui_alp_market_ord.zpip_c_country_vhType">
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="mrktid"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpip_ui_alp_market_ord.zpip_c_phase_vhType">
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Phaseid"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpip_ui_alp_market_ord.zpip_c_prodgr_vhType">
+                <Annotation Term="UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="pgid"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

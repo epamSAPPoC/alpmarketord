@@ -1,0 +1,230 @@
+{
+    "_version": "1.42.0",
+    "sap.app": {
+        "id": "alpnamespace.alpmarketord",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:alp",
+            "version": "1.7.5",
+            "toolsId": "81f5aee2-f214-44b0-a729-4c922a0ea41c"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZPIP_UI_ALP_MARKET_ORD_O2/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZPIP_UI_ALP_MARKET_ORD_O2_VAN",
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZPIP_UI_ALP_MARKET_ORD_O2_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZPIP_UI_ALP_MARKET_ORD_O2_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZPIP_UI_ALP_MARKET_ORD_O2_VAN.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "alpnamespace-alpmarketord-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "alpsemantic",
+                    "action": "alpreportaction",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": "https://icons.iconarchive.com/icons/iconsmind/outline/128/Bar-Chart-icon.png"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.102.7",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "alpnamespace.alpmarketord.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "KPIModel": {
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "useBatch": true,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                },
+                "dataSource": "mainService",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
+        }
+    },
+    "sap.ui.generic.app": {
+        "_version": "1.3.0",
+        "settings": {
+            "forceGlobalRefresh": false,
+            "objectPageHeaderType": "Dynamic",
+            "considerAnalyticalParameters": true,
+            "showDraftToggle": false
+        },
+        "pages": {
+            "AnalyticalListPage|ALPMarketOrder": {
+                "entitySet": "ALPMarketOrder",
+                "component": {
+                    "name": "sap.suite.ui.generic.template.AnalyticalListPage",
+                    "list": true,
+                    "settings": {
+                        "condensedTableLayout": true,
+                        "showGoButtonOnFilterBar": true,
+                        "qualifier": "MainChart",
+                        "autoHide": true,
+                        "smartVariantManagement": false,
+                        "tableSettings": {
+                            "multiSelect": true,
+                            "type": "AnalyticalTable",
+                            "selectAll": true
+                        },
+                        "keyPerformanceIndicators": {
+                            "AVG Gross Income": {
+                                "model": "KPIModel",
+                                "entitySet": "ALPMarketOrder",
+                                "qualifier": "KPIGrossIncomeByCountryAvg"
+                            },
+                            "MAX Gross Income": {
+                                "model": "KPIModel",
+                                "entitySet": "ALPMarketOrder",
+                                "qualifier": "KPIGrossIncomeByCountryMax"
+                            },
+                            "MIN Gross Income": {
+                                "model": "KPIModel",
+                                "entitySet": "ALPMarketOrder",
+                                "qualifier": "KPIGrossIncomeByCountryMin"
+                            },
+                            "Total Gross Income": {
+                                "model": "KPIModel",
+                                "entitySet": "ALPMarketOrder",
+                                "qualifier": "KPIGrossIncomeByCountry"
+                            },
+                            "Gross Amount By Country": {
+                                "model": "KPIModel",
+                                "entitySet": "ALPMarketOrder",
+                                "qualifier": "KPIGrossAmountByCountry"
+                            }
+                        },
+                        "filterSettings": {
+                            "dateSettings": {
+                                "useDateRange": true,
+                                "fields": {
+                                    "DeliveryDate": {
+                                        "selectedValues": "DATERANGE,FROM,YESTERDAY,TODAY,TODAYXYDAYS,NEXT,LASTYEAR,LAST2WEEKS,LAST3WEEKS,LAST4WEEKS,LAST5WEEKS,YEARTODATE,QUARTER1,QUARTER2,QUARTER3,QUARTER4",
+                                        "exclude": false
+                                    }
+                                }
+                            }
+                        },
+                        "dataLoadSettings": {
+                            "loadDataOnAppLaunch": "always"
+                        }
+                    }
+                },
+                "pages": {
+                    "ObjectPage|ALPMarketOrder": {
+                        "entitySet": "ALPMarketOrder",
+                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                        "component": {
+                            "name": "sap.suite.ui.generic.template.ObjectPage"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "analytical"
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "alpnamespace-alpmarketord"
+    }
+}
