@@ -54,7 +54,12 @@
                     "action": "alpreportaction",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubtitle}}",
-                    "icon": "https://icons.iconarchive.com/icons/hopstarter/soft-scraps/128/Document-Organization-Chart-icon.png"
+                    "icon": "https://icons.iconarchive.com/icons/hopstarter/soft-scraps/128/Document-Organization-Chart-icon.png",
+                    "indicatorDataSource": {
+                        "dataSource": "mainService",
+                        "path": "/dynamic_dest/abap-cloud-abap_cloud-ee8498eatrial-dev/sap/opu/odata/sap/ZPP_UI_PRODLISTREPORT_V2/OrderOfMarket/$count",
+                        "refresh": 10
+                    }
                 }
             }
         }
